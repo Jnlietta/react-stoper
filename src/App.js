@@ -1,8 +1,7 @@
 import Container from "./components/Container/Container.js";
 import Button from "./components/Button/Button.js";
 import Timer from "./components/Timer/Timer.js";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const App = () => {
 
@@ -30,9 +29,9 @@ const App = () => {
   return (
     <Container>
       <Timer time={time} />
-      <Button onClick={() => startTimer}>Start</Button>
-      <Button onClick={() => stopTimer}>Stop</Button>
-      <Button onClick={() => resetTimer}>Reset</Button>
+      <Button onClick={startTimer}>Start</Button>
+      <Button onClick={stopTimer}>Stop</Button>
+      <Button onClick={resetTimer}>Reset</Button>
     </Container>
   );
 };
