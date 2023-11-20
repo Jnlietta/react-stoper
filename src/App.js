@@ -13,9 +13,13 @@ const App = () => {
     setIntervalValue(setInterval(()=> {setTime(prevValue => prevValue + 1)}, 1))
   };
 
-  const stopTimer = useEffect(() => {
+  const stopTimer = () => { //przy kliknieciu buttona
+    clearInterval(intervalValue); //Przyjmuje tylko jeden argument – referencje do intervalu, który chcemy usunąć. Oczywiście, żeby było to możliwe, nasz interval musi być przypisany do jakiejś zmiennej czy stałej czyli stanu??
+  };
+
+  useEffect(() => { //przy usuwaniu komponentu
     return () => {
-      if(startTimer) clearInterval(startTimer);
+      if(intervalValue) clearInterval(intervalValue); //sprawdzam czy ktos juz wczesniej nie usunal intervalu np klikajac button "stop"
     };
   }, []);
 
