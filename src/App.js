@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const App = () => {
 
-  const [time, setTime] = useState (2);
+  const [time, setTime] = useState (0);
   const [intervalValue, setIntervalValue] = useState(null);
 
   const startTimer = () => {
@@ -23,6 +23,7 @@ const App = () => {
   }, []);
 
   const resetTimer = () => {
+    if(intervalValue) clearInterval(intervalValue);
     setTime(0);
   };
 
