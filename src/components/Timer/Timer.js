@@ -1,18 +1,26 @@
 import styles from './Timer.module.scss'
 
 const Timer = ({ time }) => {
-    const formatTime = milliseconds => {
-        const hours = Math.floor(milliseconds / (1000 * 60 * 60)).toString().padStart(2, '0');
-        const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
-        const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000).toString().padStart(2, '0');
-        const millisecondsFormatted= (milliseconds % 1000).toString().padStart(3, '0');
-      
-        return `${hours}:${minutes}:${seconds}.${millisecondsFormatted}`;
+        const padTo2Digits = num => {
+            return num.toString().padStart(2, '0');
+          }
+
+        const convertMsToTime = milliseconds => {
+            let seconds = Math.floor(milliseconds / 1000);
+            let minutes = Math.floor(seconds / 60);
+            let hours = Math.floor(minutes / 60);
+          
+            milliseconds = milliseconds % 1000;
+            seconds = seconds % 60;
+            minutes = minutes % 60;
+
+            let formatedTime = `${padTo2Digits(hours)}:${padTo2Digits(minutes)}:${padTo2Digits(seconds)}.${milliseconds.toString().padStart(3, '0')}`;
+            return formatedTime;
     };
 
     return (
         <div className={styles.timer}>
-            {formatTime(time)}
+            {convertMsToTime(time)}
         </div>
     );
 };
