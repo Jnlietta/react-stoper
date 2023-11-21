@@ -9,7 +9,8 @@ const App = () => {
   const [intervalValue, setIntervalValue] = useState(null);
 
   const startTimer = () => {
-    setIntervalValue(setInterval(()=> {setTime(prevValue => prevValue + 1)}, 1))
+    if (intervalValue) clearInterval(intervalValue);
+    setIntervalValue(setInterval(()=> {setTime(prevValue => prevValue + 1)}, 1));
   };
 
   const stopTimer = () => { //przy kliknieciu buttona
